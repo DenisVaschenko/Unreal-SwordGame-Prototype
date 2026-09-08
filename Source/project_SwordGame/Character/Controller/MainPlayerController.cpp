@@ -2,7 +2,8 @@
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
 #include "InputActionValue.h"
-#include "GameFramework/Character.h"
+#include "../MainCharacter.h"
+
 void AMainPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
@@ -18,6 +19,8 @@ void AMainPlayerController::SetupInputComponent()
 		EnhancedInput->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AMainPlayerController::Move);
 		EnhancedInput->BindAction(RotateAction, ETriggerEvent::Triggered, this, &AMainPlayerController::Rotate);
 		EnhancedInput->BindAction(JumpAction, ETriggerEvent::Started, this, &AMainPlayerController::Jump);
+		EnhancedInput->BindAction(SprintAction, ETriggerEvent::Started, this, &AMainPlayerController::StartSprint);
+		EnhancedInput->BindAction(SprintAction, ETriggerEvent::Completed, this, &AMainPlayerController::StopSprint);
 	}
 }
 void AMainPlayerController::Move(const FInputActionValue& Value)
@@ -48,6 +51,20 @@ void AMainPlayerController::Jump(const FInputActionValue& Value)
 	if (ACharacter* ControlledPawn = Cast<ACharacter>(GetPawn()))
 	{
 		ControlledPawn->Jump();
+	}
+}
+void AMainPlayerController::StartSprint()
+{
+	if (AMainCharacter* ControlledPawn = Cast<AMainCharacter>(GetPawn()))
+	{
+		ControlledPawn->StartSprint();
+	}
+}
+void AMainPlayerController::StopSprint()
+{
+	if (AMainCharacter* ControlledPawn = Cast<AMainCharacter>(GetPawn()))
+	{
+		ControlledPawn->StopSprint();
 	}
 }
 

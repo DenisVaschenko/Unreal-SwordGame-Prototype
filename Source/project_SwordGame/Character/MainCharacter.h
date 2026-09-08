@@ -13,7 +13,10 @@ class PROJECT_SWORDGAME_API AMainCharacter : public ACharacter
 
 public:
 	AMainCharacter();
-
+	UFUNCTION(BlueprintCallable, Category = "Movement")
+	void StartSprint();
+	UFUNCTION(BlueprintCallable, Category = "Movement")
+	void StopSprint();
 protected:
 	virtual void BeginPlay() override;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera")
@@ -21,4 +24,10 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera")
 	TObjectPtr<UCameraComponent> FollowCamera;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Movement")
+	float WalkSpeed = 450.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Movement")
+	float SprintSpeed = 750.0f;
 };
