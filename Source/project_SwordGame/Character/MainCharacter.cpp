@@ -19,4 +19,3 @@ void AMainCharacter::BeginPlay()
 	GetCharacterMovement()->JumpZVelocity = 400.0f;
 }
 
-
