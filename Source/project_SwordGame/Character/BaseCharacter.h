@@ -6,7 +6,7 @@
 #include "GameFramework/Character.h"
 #include "BaseCharacter.generated.h"
 
-UCLASS()
+UCLASS(Abstract)
 class PROJECT_SWORDGAME_API ABaseCharacter : public ACharacter
 {
 	GENERATED_BODY()
@@ -14,15 +14,11 @@ class PROJECT_SWORDGAME_API ABaseCharacter : public ACharacter
 public:
 	ABaseCharacter();
 
-	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
+	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser);
 
 	UFUNCTION(BlueprintCallable, Category = "Combat")
 	bool IsAlive() const { return Health > 0.0f; }
-protected:
-	virtual void BeginPlay() override;
 
-public:	
-	virtual void Tick(float DeltaTime) override;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
 	float MaxHealth = 100.0f;
 

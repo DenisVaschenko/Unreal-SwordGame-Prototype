@@ -19,8 +19,6 @@ void AMainPlayerController::SetupInputComponent()
 		EnhancedInput->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AMainPlayerController::Move);
 		EnhancedInput->BindAction(RotateAction, ETriggerEvent::Triggered, this, &AMainPlayerController::Rotate);
 		EnhancedInput->BindAction(JumpAction, ETriggerEvent::Started, this, &AMainPlayerController::Jump);
-		EnhancedInput->BindAction(SprintAction, ETriggerEvent::Started, this, &AMainPlayerController::StartSprint);
-		EnhancedInput->BindAction(SprintAction, ETriggerEvent::Completed, this, &AMainPlayerController::StopSprint);
 	}
 }
 void AMainPlayerController::Move(const FInputActionValue& Value)
