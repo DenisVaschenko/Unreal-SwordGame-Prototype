@@ -53,18 +53,4 @@ void AMainPlayerController::Jump(const FInputActionValue& Value)
 		ControlledPawn->Jump();
 	}
 }
-void AMainPlayerController::StartSprint()
-{
-	if (AMainCharacter* ControlledPawn = Cast<AMainCharacter>(GetPawn()))
-	{
-		ControlledPawn->StartSprint();
-	}
-}
-void AMainPlayerController::StopSprint()
-{
-	if (AMainCharacter* ControlledPawn = Cast<AMainCharacter>(GetPawn()))
-	{
-		ControlledPawn->StopSprint();
-	}
-}
 

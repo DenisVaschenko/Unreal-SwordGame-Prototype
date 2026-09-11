@@ -27,13 +27,9 @@ protected:
 	UInputAction* JumpAction;
 	UPROPERTY(EditDefaultsOnly, Category = "Input")
 	UInputAction* RotateAction;
-	UPROPERTY(EditDefaultsOnly, Category = "Input")
-	UInputAction* SprintAction;
 public:
 	void Move(const FInputActionValue& Value);
 	void Rotate(const FInputActionValue& Value);
 	void Jump(const FInputActionValue& Value);
-	void StartSprint();
-	void StopSprint();
 
 };

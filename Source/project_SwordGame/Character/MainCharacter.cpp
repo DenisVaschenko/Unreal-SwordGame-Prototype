@@ -13,19 +13,10 @@ void AMainCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
-	GetCharacterMovement()->MaxWalkSpeed = WalkSpeed;
+	GetCharacterMovement()->MaxWalkSpeed = 450.f;
 	GetCharacterMovement()->BrakingDecelerationWalking = 2000.0f; 
 	GetCharacterMovement()->AirControl = 0.35f;    
 	GetCharacterMovement()->JumpZVelocity = 400.0f;
-}
-void AMainCharacter::StartSprint()
-{
-	GetCharacterMovement()->MaxWalkSpeed = SprintSpeed;
-}
-
-void AMainCharacter::StopSprint()
-{
-	GetCharacterMovement()->MaxWalkSpeed = WalkSpeed;
 }
 
 
