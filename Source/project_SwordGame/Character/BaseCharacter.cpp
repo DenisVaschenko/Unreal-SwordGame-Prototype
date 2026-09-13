@@ -8,14 +8,20 @@ ABaseCharacter::ABaseCharacter()
 	PrimaryActorTick.bCanEverTick = true;
 
 }
-void ABaseCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+void ABaseCharacter::BeginPlay()
 {
-	Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
-	Health -= DamageAmount;
+	Super::BeginPlay();
+	Health = MaxHealth;
+}
+float ABaseCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+{
+	float damage = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+	Health -= damage;
 	if (Health <= 0.0f)
 	{
 		bIsDead = true;
 	}
+	return damage;
 }
 
 

@@ -18,4 +18,3 @@ void AMainCharacter::BeginPlay()
 	GetCharacterMovement()->AirControl = 0.35f;    
 	GetCharacterMovement()->JumpZVelocity = 400.0f;
 }
-
