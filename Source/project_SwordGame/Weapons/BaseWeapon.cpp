@@ -12,9 +12,13 @@ ABaseWeapon::ABaseWeapon()
 	RootSceneComponent = CreateDefaultSubobject<USceneComponent>(TEXT("RootComponent"));
 	SetRootComponent(RootSceneComponent);
 
-	WeaponMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("WeaponMesh"));
-	WeaponMesh->SetupAttachment(RootSceneComponent);
-	WeaponMesh->SetCollisionResponseToAllChannels(ECR_Ignore);
+	StaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("WeaponMesh"));
+	StaticMesh->SetupAttachment(RootSceneComponent);
+	StaticMesh->SetCollisionResponseToAllChannels(ECR_Ignore);
+
+	SkeletalMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SkeletalMesh"));
+	SkeletalMesh->SetupAttachment(RootSceneComponent);
+	SkeletalMesh->SetCollisionResponseToAllChannels(ECR_Ignore);
 }
 
 void ABaseWeapon::AttachToSocket(USceneComponent* InParent, FName InSocketName)
